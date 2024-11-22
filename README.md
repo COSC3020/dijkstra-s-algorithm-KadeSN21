@@ -23,3 +23,11 @@ inefficient.
 
 What is the big $\Theta$ complexity of your implementation? Add your
 answer, including your reasoning, to this markdown file.
+
+Initializing distances itterates over $n$ verticies for a graph with $n$ verticies, This gives us $O(n)$. The first for loop that actually calculates the shortest path and updates the distances is within a while loop that both itterate $n$ times. So this would give us $O(n^2)$, however, there is a second for loop in this while loop that itterates over all $m$ edges within the graph, so the overall complexity of this implementation is $O(n^2 + m)$.
+
+Help: I looked at aerick-321's test code to get a better idea of what was expected from the tests, then implemented my own function. I also watched this video to deepen my understanding of Dijkstra's Algorithm: https://www.youtube.com/watch?v=_lHSawdgXpI. ChatGPT helped me implement the test on GitHub action functionality.
+
+“I certify that I have listed all sources used to complete this exercise, including the use of any Large Language Models. All of the work is my own, except where stated otherwise. I am aware that plagiarism carries severe penalties and that if plagiarism is suspected, charges may be filed against me without prior notice.”
+
+
