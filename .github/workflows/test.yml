@@ -1,0 +1,35 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main    # Run tests on push to the main branch (adjust if needed)
+  pull_request:
+    branches:
+      - main    # Run tests on pull requests targeting the main branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest   # Run tests on the latest Ubuntu
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js (for Node.js projects, skip if not applicable)
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Set the Node.js version (adjust based on your project)
+
+    - name: Install dependencies
+      run: npm install  # Adjust this based on your project's dependency manager (e.g., npm, yarn)
+
+    - name: Run tests
+      run: npm test  # Adjust to the command you use to run your tests (e.g., `npm test`, `yarn test`, `jest`, etc.)
+
+    - name: Upload test results (optional, for test reporting)
+      if: failure()
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: path/to/test/results  # Path to store results if you have a custom results file
