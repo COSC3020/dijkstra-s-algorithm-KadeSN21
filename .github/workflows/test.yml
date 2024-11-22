@@ -3,14 +3,14 @@ name: Run Tests
 on:
   push:
     branches:
-      - main    # Run tests on push to the main branch (adjust if needed)
+      - main    
   pull_request:
     branches:
-      - main    # Run tests on pull requests targeting the main branch
+      - main   
 
 jobs:
   test:
-    runs-on: ubuntu-latest   # Run tests on the latest Ubuntu
+    runs-on: ubuntu-latest   
 
     steps:
     - name: Check out code
@@ -19,17 +19,10 @@ jobs:
     - name: Set up Node.js (for Node.js projects, skip if not applicable)
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # Set the Node.js version (adjust based on your project)
+        node-version: '14'  
 
     - name: Install dependencies
-      run: npm install  # Adjust this based on your project's dependency manager (e.g., npm, yarn)
+      run: npm install  
 
     - name: Run tests
-      run: npm test  # Adjust to the command you use to run your tests (e.g., `npm test`, `yarn test`, `jest`, etc.)
-
-    - name: Upload test results (optional, for test reporting)
-      if: failure()
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-results
-        path: path/to/test/results  # Path to store results if you have a custom results file
+      run: npm code.test.js  
